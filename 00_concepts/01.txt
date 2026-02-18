@@ -1,0 +1,13 @@
+React
+- hooks: React hooks are functions that allow you to use state and other React features in functional components. They were introduced in React 16.8 and have become a fundamental part of React development. Some commonly used hooks include useState, useEffect, useContext, and useRef.
+
+- reconciliation: commonly known as "virtual dom" is a diffing algorithm that compares the new virtual DOM with the previous one and updates only the parts of the real DOM that have changed. This process is efficient and helps improve performance by minimizing unnecessary updates to the DOM.
+
+- fiber: Fiber is a reimplementation of the "React reconciliation" algorithm that was introduced in React 16. It allows React to break down rendering work into smaller units and prioritize updates based on their importance. This enables React to be more responsive and efficient, especially when dealing with complex applications or large component trees. Fiber's main job is the ability to pause, reuse, or abort work to keep the browser's main thread free for animations and user input.
+    (The biggest "shift" with Fiber is that the diffing process is now interruptible.
+    React breaks the diffing work into tiny units called Fibers.
+    It can start diffing the V-DOM, pause to let the browser handle an animation or a click, and then pick up where it left off.
+    It only commits the changes to the "OG" DOM once the entire WIP tree is finished)
+
+- setState: setState is a method used in class components to update the component's state. It takes an object or a function as an argument and schedules an update to the component's state. When setState is called, React will re-render the component and its children with the updated state. In functional components, the useState hook is used to manage state instead of setState. When setState is used a new tree is created and the old tree is compared to the new tree, and only the parts that have changed are updated in the real DOM. This process is called reconciliation.
+more info link: https://github.com/acdlite/react-fiber-architecture
