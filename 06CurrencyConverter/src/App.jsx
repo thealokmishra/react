@@ -12,7 +12,7 @@ function App() {
 
   const currencyInfo = useCurrencyInfo(from);
 
-  const options = Object.keys(currencyInfo);
+  const options = Object.keys(currencyInfo); //taking the currency object you got from your API and turning it into a simple list of keys (currency Names).
 
   const swap = () => {
     setFrom(to);

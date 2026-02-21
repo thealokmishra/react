@@ -7,8 +7,8 @@ function InputBox({
   placeholder,
   onAmountChange,
   onCurrencyChange,
-  currencyOptions = [],
-  selectCurrency = "usd",
+  currencyOptions = [], //array to hold all currency options
+  selectCurrency = "usd", //default value so usd is already selected
   amountDisable = false,
   currencyDisable = false,
   className = "",
@@ -44,10 +44,13 @@ function InputBox({
         <select
           className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
           value={selectCurrency}
+          // here this arrow fn checks Only try to run the function if it actually exists: if onCurrencyChange exists run the function with event's value, this fn is passed as props from app.jsx
           onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
           disabled={currencyDisable}
         >
           {currencyOptions.map((currency) => (
+            // when looping (map,filter,reduce,foreach) in jsx, ALWAYS use key attribute
+            // currencyOptions is the prop that contain object of collection of the currencies we fetched from the api, using map add all the keys as option in dropdown
             <option key={currency} value={currency}>
               {currency}
             </option>
