@@ -13,7 +13,7 @@ function InputBox({
   currencyDisable = false,
   className = "",
 }) {
-  const amountInputId = useId();
+  const amountInputId = useId(); //generates unique id using useId hook, used to atach to the input element to the label using htmlFor: makes it easier for accessibility like click to focus, screen readers
 
   return (
     <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
@@ -39,10 +39,10 @@ function InputBox({
           }}
         />
       </div>
-      <div className="w-1/2 flex flex-wrap justify-end text-right">
-        <p className="text-black/40 mb-2 w-full">Currency Type</p>
+      <div className="w-1/2 flex items-center justify-end text-right">
+        {/* <p className="text-black/40 mb-2 w-full">Currency Type</p> */}
         <select
-          className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
+          className=" rounded-lg px-2 py-2 bg-gray-100 border border-zinc-200 cursor-pointer outline-none" //og
           value={selectCurrency}
           // here this arrow fn checks Only try to run the function if it actually exists: if onCurrencyChange exists run the function with event's value, this fn is passed as props from app.jsx
           onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
@@ -52,7 +52,7 @@ function InputBox({
             // when looping (map,filter,reduce,foreach) in jsx, ALWAYS use key attribute
             // currencyOptions is the prop that contain object of collection of the currencies we fetched from the api, using map add all the keys as option in dropdown
             <option key={currency} value={currency}>
-              {currency}
+              {currency.toUpperCase()}
             </option>
           ))}
         </select>

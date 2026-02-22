@@ -11,7 +11,7 @@ function useCurrencyInfo(currency) {
       .then((res) => res.json()) // convert to json
       .then((res) => setData(res[currency])); //set object data to the response recieved for given currency
     console.log(data);
-  }, [currency]); // dependency array to re-render when currency or data changes
+  }, [currency]); // dependency array to re-render when currency changes
   console.log(data);
   return data; // return the data object, contains exchange rates for the given currency
 }
