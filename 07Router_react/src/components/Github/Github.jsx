@@ -1,5 +1,5 @@
 // import { useEffect, useState } from "react";
-
+// directly calling API approach
 // function Github() {
 //   //   const data = useLoaderData();
 //   const [data, setData] = useState({}); //empty object to store response data
@@ -24,3 +24,19 @@
 // }
 
 // export default Github;
+
+// using loader approach
+import { useLoaderData } from "react-router-dom";
+
+function Github() {
+  const data = useLoaderData();
+
+  return (
+    <div className="text-center m-4 bg-gray-600 text-white p-4 text-3xl">
+      Github ID: {data.id}
+      <img src={data.avatar_url} alt="Git picture" width={300} />
+    </div>
+  );
+}
+
+export default Github;

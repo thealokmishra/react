@@ -6,6 +6,7 @@ import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import User from "./components/User/User";
 import Github from "./components/Github/Github.jsx";
+import { githubInfoLoader } from "./utils/githubInfoLoader";
 import Layout from "./Layout";
 import {
   Route,
@@ -44,11 +45,13 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="user/:userid" element={<User />} />
-      <Route path="github" element={<Github />} />
-      {/* <Route loader={githubInfoLoader} path="github" element={<Github />} /> */}
+      <Route loader={githubInfoLoader} path="github" element={<Github />} />
     </Route>,
   ),
 );
+
+// ln 49: the router takes data from githubinfoloader and passes it to github component already so when it loads the data is already there
+// calling api directly in component will lead to delay in fetching at rendering data, so using loader is better and optimized approach
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
